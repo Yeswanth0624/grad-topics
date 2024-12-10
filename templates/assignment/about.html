@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power Rangers</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Orbitron', sans-serif;
+            background-color: #1a1a2e;
+            color: #f2f2f2;
+            background-image: url('https://source.unsplash.com/1920x1080/?galaxy');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 80px auto 0;
+            padding: 20px;
+        }
+
+        h1, h2 {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+        }
+
+        h1 {
+            text-align: center;
+            color: #ff0000;
+            font-size: 3rem;
+            margin: 30px 0;
+            letter-spacing: 2px;
+            font-family: 'Bangers', sans-serif;
+        }
+
+        h2 {
+            color: #ffff00;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #ff0000;
+            display: flex;
+            justify-content: space-around;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        .navbar a {
+            color: #f2f2f2;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .navbar a:hover {
+            color: #ffff00;
+        }
+
+        .timeline {
+            margin: 50px auto;
+            width: 90%;
+            max-width: 800px;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: #ff0000;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin: 20px 0;
+            padding: 10px 20px;
+        }
+
+        .timeline-item:nth-child(odd) {
+            text-align: right;
+            transform: translateX(-10%);
+        }
+
+        .timeline-item:nth-child(even) {
+            text-align: left;
+            transform: translateX(10%);
+        }
+
+        .timeline-item .timeline-content {
+            display: inline-block;
+            max-width: 300px;
+            background-color: #ff0000;
+            color: #fff;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        .timeline-item .timeline-date {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #ffff00;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="{{ url_for('Home_page') }}">Home</a>
+        <a href="{{ url_for('manage_events') }}">Cards</a>
+        <a href="{{ url_for('about') }}">Rangers Info</a>
+        <a href="/">Landing Page</a>
+    </div>
+    <br><br>
+    <h1>Power Rangers</h1>
+
+    <h2 >Timeline</h2>
+
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <p class="timeline-date">1993</p>
+                <p>Mighty Morphin Power Rangers debuted, starting the iconic franchise.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <p class="timeline-date">1995</p>
+                <p>The first movie brought Power Rangers to the big screen.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <p class="timeline-date">2002</p>
+                <p>Wild Force introduced new characters and Zords.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <p class="timeline-date">2017</p>
+                <p>A modern reboot reimagined Power Rangers for a new audience.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

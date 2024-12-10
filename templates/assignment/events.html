@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power Rangers Trading Cards</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Bangers&display=swap" rel="stylesheet">
+    <style>
+        /* Reset and base styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Orbitron', sans-serif;
+            background-color: #1a1a2e;
+            color: #f2f2f2;
+            background-image: url('https://source.unsplash.com/1920x1080/?galaxy');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 80px auto 0;
+            padding: 20px;
+        }
+
+        h1, h2 {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+        }
+
+        h1 {
+            text-align: center;
+            color: #ff0000;
+            font-size: 3rem;
+            margin: 30px 0;
+            letter-spacing: 2px;
+            font-family: 'Bangers', sans-serif;
+        }
+
+        h2 {
+            color: #ffff00;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        /* Navbar styling */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #ff0000;
+            display: flex;
+            justify-content: space-around;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        .navbar a {
+            color: #f2f2f2;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .navbar a:hover {
+            color: #ffff00;
+        }
+
+        /* Card table styling */
+        table {
+            width: 100%;
+            margin: 20px 0;
+            border-collapse: separate;
+            border-spacing: 0;
+            background-color: rgba(26, 26, 46, 0.9);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid #2a2a4a;
+        }
+
+        th {
+            background-color: #ff0000;
+            color: #ffff00;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        td {
+            background-color: rgba(42, 42, 74, 0.7);
+            color: #f2f2f2;
+            transition: background-color 0.3s ease;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover td {
+            background-color: rgba(62, 62, 94, 0.8);
+        }
+
+        /* Form container */
+        .form-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        /* Form styling */
+        form {
+            background-color: rgba(26, 26, 46, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: calc(50% - 15px);
+            transition: transform 0.3s ease;
+            border: 2px solid #ff0000;
+        }
+
+        form:hover {
+            transform: translateY(-5px);
+        }
+
+        input, select, button {
+            width: 100%;
+            margin-bottom: 15px;
+            padding: 12px;
+            border-radius: 5px;
+            border: 1px solid #2a2a4a;
+            background-color: rgba(42, 42, 74, 0.6);
+            color: #f2f2f2;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #ff0000;
+            box-shadow: 0 0 0 2px rgba(255, 0, 0, 0.2);
+        }
+
+        button {
+            background-color: #ff0000;
+            border: none;
+            color: #ffff00;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border-radius: 10px;
+        }
+
+        button:hover {
+            background-color: #ffff00;
+            color: #ff0000;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Filter and Sort Section */
+        .filter-sort-form {
+            background-color: rgba(42, 42, 74, 0.7);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .filter-sort-form select {
+            width: calc(50% - 10px);
+            margin: 5px;
+        }
+
+        .filter-sort-form button {
+            width: 100%;
+            background-color: #ff0000;
+            color: #ffff00;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="{{ url_for('Home_page') }}">Home</a>
+        <a href="{{ url_for('manage_events') }}">Cards</a>
+        <a href="{{ url_for('about') }}">Rangers Info</a>
+        <a href="/">Landing Page</a>
+    </div>
+    <div class="container">
+        <h1>Power Rangers Trading Cards</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Card Name</th>
+                    <th>Color</th>
+                    <th>Power</th>
+                    <th>Dummy Card</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for card in cards %}
+                <tr>
+                    <td>{{ card.name }}</td>
+                    <td>{{ card.color }}</td>
+                    <td>{{ card.power }}</td>
+                    <td>{{ card.dummy_card }}</td>
+                    <td>
+                        <a href="{{ url_for('update_event', id=card.id) }}">Update</a>
+                        <a href="{{ url_for('delete_event', id=card.id) }}" onclick="return confirm('Are you sure you want to delete this card?')">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="form-container">
+            <form action="{{ url_for('manage_events') }}" method="POST">
+                <h2>Add New Card</h2>
+                <input type="text" name="card_name" placeholder="Card Name" required>
+                <label for="color">Choose a Color:</label>
+                <select name="color" id="color" required>
+                    <option value="" disabled selected>Select Color</option>
+                    <option value="red">Red</option>
+                    <option value="blue">Blue</option>
+                </select>
+                <input type="number" name="power" placeholder="Power Level" required>
+                <input type="text" name="dummy_card" placeholder="Dummy Card Info" required>
+                <button type="submit">Add Card</button>
+            </form>
+
+            <form class="filter-sort-form" action="{{ url_for('manage_events') }}" method="GET">
+                <h2>Filter and Sort</h2>
+                <select name="filter_color">
+                    <option value="">Select Color</option>
+                    <option value="red" {% if request.args.get('filter_color') == 'red' %}selected{% endif %}>Red</option>
+                    <option value="blue" {% if request.args.get('filter_color') == 'blue' %}selected{% endif %}>Blue</option>
+                </select>
+                <select name="sort_order">
+                    <option value="asc" {% if request.args.get('sort_order') == 'asc' %}selected{% endif %}>Ascending</option>
+                    <option value="desc" {% if request.args.get('sort_order') == 'desc' %}selected{% endif %}>Descending</option>
+                </select>
+                <button type="submit">Apply</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,192 @@
+{% extends "base.html" %}
+{% block head %}
+<title>Power Rangers Trading Cards</title>
+<!-- Include Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEJ8vJ6f9Do1H2Gb82L5k9g2ImQbb27+oS9lGocpSAwR7CmOFS1+a+1xaXYK9" crossorigin="anonymous">
+
+<!-- Power Rangers Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Bangers&display=swap" rel="stylesheet">
+
+<style>
+      * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Orbitron', sans-serif;
+            background-color: #1a1a2e;
+            color: #f2f2f2;
+            background-image: url('https://source.unsplash.com/1920x1080/?galaxy');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 80px auto 0;
+            padding: 20px;
+        }
+
+        h1, h2 {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+        }
+
+        h1 {
+            text-align: center;
+            color: #ff0000;
+            font-size: 3rem;
+            margin: 30px 0;
+            letter-spacing: 2px;
+            font-family: 'Bangers', sans-serif;
+        }
+
+        h2 {
+            color: #ffff00;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        /* Navbar styling */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #ff0000;
+            display: flex;
+            justify-content: space-around;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        .navbar a {
+            color: #f2f2f2;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .navbar a:hover {
+            color: #ffff00;
+        }
+
+    .content {
+        margin: 20px auto;
+        width: 90%;
+        max-width: 1200px;
+        background-color: rgba(16, 24, 32, 0.85);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    h1, h2 {
+        text-shadow: 2px 2px 5px rgba(255, 255, 0, 0.8);
+    }
+
+    h1 {
+        text-align: center;
+        color: #ff0000;
+        font-size: 3rem;
+        margin: 20px 0;
+    }
+
+    h2 {
+        color: #ffff00;
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+
+    .card-demo {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+    }
+
+    .trading-card {
+        background-color: rgba(32, 64, 96, 0.85);
+        border: 2px solid #ff0000;
+        border-radius: 10px;
+        padding: 15px;
+        width: 250px;
+        text-align: center;
+        transition: transform 0.3s ease;
+    }
+
+    .trading-card:hover {
+        transform: scale(1.05);
+        border-color: #ffff00;
+    }
+
+    .trading-card h3 {
+        color: #ffff00;
+        margin-bottom: 10px;
+    }
+
+    .trading-card p {
+        margin: 5px 0;
+        font-size: 1rem;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<!-- Navigation Bar -->
+<div class="navbar">
+    <a href="{{ url_for('Home_page') }}">Home</a>
+    <a href="{{ url_for('manage_events') }}">Cards</a>
+    <a href="{{ url_for('about') }}">Rangers Info</a>
+    <a href="/">Landing Page</a>
+</div>
+
+<!-- Content Section -->
+<div class="content">
+    <h1>Power Rangers Trading Cards</h1>
+    <p>Discover the ultimate collection of Power Rangers trading cards! Explore their powers, unique abilities, and epic designs.</p>
+
+    <h2>Featured Cards</h2>
+    <div class="card-demo">
+        <div class="trading-card">
+            <h3>Red Ranger</h3>
+            <p><strong>Color:</strong> Red</p>
+            <p><strong>Power:</strong> Fire Strike</p>
+            <p><strong>Description:</strong> Leader of the team with unmatched courage.</p>
+        </div>
+        <div class="trading-card">
+            <h3>Blue Ranger</h3>
+            <p><strong>Color:</strong> Blue</p>
+            <p><strong>Power:</strong> Aqua Shield</p>
+            <p><strong>Description:</strong> Tactical genius with water-based powers.</p>
+        </div>
+        <div class="trading-card">
+            <h3>Green Ranger</h3>
+            <p><strong>Color:</strong> Green</p>
+            <p><strong>Power:</strong> Nature's Fury</p>
+            <p><strong>Description:</strong> Harnesses the power of nature to protect the Earth.</p>
+        </div>
+        <div class="trading-card">
+            <h3>Yellow Ranger</h3>
+            <p><strong>Color:</strong> Yellow</p>
+            <p><strong>Power:</strong> Thunder Clap</p>
+            <p><strong>Description:</strong> Speed and agility combined with lightning power.</p>
+        </div>
+    </div>
+    <br>
+    <div>
+        <p> In this section, users are given the ability to create customized cards, which are dynamically displayed on the page. Once created, these cards can be interacted with by applying various filters and sorting options, allowing users to organize and view the content in a way that best suits their preferences. The filter feature enables users to narrow down the cards based on specific criteria such as category, date, or other attributes. Additionally, the sorting functionality provides users with the option to arrange the cards in ascending or descending order, whether by date, title, or any other relevant factor. This flexibility ensures that users can easily manage and interact with the cards, tailoring the display to their needs and enhancing the overall user experience. </p>
+    </div>
+</div>
+{% endblock %}
+
+
+
